@@ -6,7 +6,7 @@ import * as gg from 'https://unpkg.com/three@0.139.2/build/three.module.js';
 import {
   GLTFLoader
 } from './GLTFLoader.js';
-"/
+*/
 
 (function() {
 
