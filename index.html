@@ -13,37 +13,94 @@
   
   <script type="module">
     
-     // import * as THREE from '/three.module.js';
+     // import * as gg from '/three.module.js';
   
-  import * as THREE from 'https://unpkg.com/three@0.139.2/build/three.module.js';
+  import * as gg from 'https://unpkg.com/three@0.139.2/build/three.module.js';
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-const cg = document.querySelector('#can1');
+(function() {
 
-const renderer = new THREE.WebGLRenderer({antialiasing: true, cg});
-/*
-renderer.setSize( window.innerWidth, window.innerHeight );
-*/
-document.body.appendChild( renderer.domElement );
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
+  var canvas = document.querySelector('#can1');
 
-camera.position.z = 5;
+  const rend = new gg.WebGLRenderer({
+    canvas: canvas,
+    antialiasing: true,
+    logarithmicDepthBuffer: true,
+    shadowMap: true,
+    //alpha: true,
+    shadowMapType: gg.PCFSoftShadowMap
+  });
+  rend.shadowMap.enabled = true;
+  rend.setClearColor(0x000000,0.96);
 
-function animate() {
-	requestAnimationFrame( animate );
 
-	cube.rotation.x += 0.01;
-	cube.rotation.y += 0.01;
+  var fov = 75;
+  const cam = new gg.PerspectiveCamera(fov,
+    0.1,
+    1,
+    900);
+  cam.position.set(0,
+    0,
+    10);
 
-	renderer.render( scene, camera );
-}
 
-animate();
+
+  //scene
+  const scene = new gg.Scene();
+  scene.fog = new gg.Fog('white', 20, 100);
+
+  const light = new gg.DirectionalLight('white',
+    2);
+  light.position.set(-9,
+    3,
+    9);
+  light.castShadow = true;
+  scene.add(light);
+
+
+  var box = new gg.Points(new gg.SphereGeometry(18, 40, 40,), new gg.PointsMaterial({
+    side: gg.FrontSide,
+    size: 0.01,
+    color: "white"
+  }));
+  scene.add(box);
+
+  //var rew = new OrbitControls(cam,
+  //rend.domElement);
+  //rew.update();
+
+
+  var anim;
+
+  (function anim() {
+
+    requestAnimationFrame(anim);
+
+    var canvas = rend.domElement;
+    var width = canvas.clientWidth;
+    var height = canvas.clientHeight;
+
+    cam.aspect = width/height;
+    cam.updateProjectionMatrix();
+
+    var needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+      rend.setSize(width, height, false);
+    }
+
+    box.rotation.x += 0.001;
+    box.rotation.y += 0.001;
+
+    rend.render(scene, cam);
+
+    //console.log(vb);
+    //ec.render(anim);
+  })();
+
+
+
+})();
+
     
   </script>
 
