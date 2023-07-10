@@ -1,0 +1,525 @@
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background-color: #e8e8e8;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-size: calc(0.75em + 1vmin);
+}
+
+
+a {
+  text-decoration: none;
+  color: #017397;
+}
+
+@font-face {
+  font-family: ttd;
+  src: url('/font/3Dumb.ttf');
+}
+
+@font-face{
+  font-family: sof;
+  src: url('/font/sofia.ttf');
+}
+
+@font-face{
+  font-family: lon;
+  src: url('/font/lon.ttf');
+}
+
+/*small*/
+@media screen and (max-width:768px){
+  #lnav {
+    display: none !important;
+  }
+  
+  #k1, #k2, #k3, #k7, #k4, #k5, #k6{
+    font-size: 30px;
+  }
+  
+  #k1>div:first-child{
+    margin: 5rem 0;
+  }
+  
+  #k2>div:nth-child(3){
+    grid-template-columns: auto auto;
+    font-size: 25px;
+  }
+  
+  #k3 {
+    flex-direction: column;
+  }
+  
+    #k4>div:nth-child(2){
+      row-gap: 20px;
+    }
+}
+
+/*large*/
+@media screen and (min-width:768px){
+  #nav, #navc {
+    display: none !important;
+  }
+  
+  body {
+    border: 2px solid red;
+    height: 500px;
+  }
+  
+  #k1 {
+    grid-template-columns: auto 55%;
+  }
+  
+  #k2>div:nth-child(3){
+    grid-template-columns: auto auto auto auto;
+  }
+  
+  #k3 {
+    flex-flow: row nowrap;
+  }
+  
+  #k7>div:nth-child(2){
+    grid-template-columns: auto auto 30%;
+    column-gap: 2rem;
+    align-items: center;
+  }
+  
+  #k7>div:nth-child(2)>div:first-child>img{
+    height: 150px;
+    width: 150px !important;
+  }
+  
+  #k4>div:nth-child(2){
+    grid-template-columns: auto auto;
+    column-gap: 20px;
+  }
+}
+
+
+#nav, #lnav {
+  background-color: #e8e8e8;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: auto auto;
+}
+
+#nav>div:first-child, #lnav>div:first-child {
+  padding: 10px;
+  font-weight: 900;
+  font-size: 120%;
+  font-family: lon;
+}
+
+#nav>div:nth-child(2), #lnav>div:nth-child(2){
+  padding: 10px 5px;
+  align-content: center;
+  display: inline-block;
+  align-items: center;
+}
+
+#lnav>div:nth-child(2)>a{
+  padding: 20px;
+  font-size: 70%;
+}
+
+#nav>div:nth-child(2){
+  z-index: 5;
+  margin-right: 15px;
+}
+
+#nav>div:nth-child(2)>span {
+  width: 30px;
+  height: 3px;
+  background-color: #000;
+  margin-top: 7px;
+  display: block;
+  border: 1px solid #ffffff70;
+}
+
+.na1 {
+  transition: 1s;
+  transform: translateX(-13px);
+}
+
+.na2 {
+  transition: 1s;
+}
+
+.nava>.na1 {
+  transform: translate(5px, 6px) rotate(45deg);
+}
+
+.nava>.na2 {
+  transform: translate(5px, -5px) rotate(-405deg);
+}
+
+.navc {
+  width: 100vw !important;
+}
+
+#navc {
+  position: fixed;
+  z-index: 4;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 0;
+  background-color: #000000ee;
+  transition: 0.5s;
+  overflow: hidden;
+  display: block;
+}
+
+#navc>div {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.anav {
+  transform: translateY(0) !important;
+}
+
+#navc a {
+  position: relative;
+  font-size: 1.5rem;
+  color: #ffffff90;
+  display: block;
+  font-weight: 900;
+  padding: 2rem 0 2rem 25%;
+  transform: translateY(100vh);
+}
+
+#navc a:hover {
+  text-decoration: underline;
+  text-decoration-color: #017397;
+  text-decoration-style: double;
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: auto;
+  left: 20px;
+  color: #fff;
+}
+
+
+
+
+#k1 {
+  display: grid;
+  align-items: center;
+  padding: 0 1.6vw;
+}
+
+#k1>div:nth-child(2)>img{
+  width: 80%;
+}
+
+#k1>div:first-child {
+  display: inline-table;
+}
+
+#k1>div:first-child>div:first-child {
+  color: dimgray;
+}
+
+#k1>div:first-child>div:nth-child(2) {
+  font-size: 140%;
+  font-weight: 900;
+}
+
+#k1>div:first-child>div:nth-child(3) {
+  font-weight: 900;
+  font-size: 140%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#lst{
+  font-family: lon;
+  display: inline-block;
+  color: #017397;
+  width: auto;
+  margin-left: 1vw;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: lst 3s steps(500, end) 3s infinite alternate;
+}
+
+#lst::after{
+  content: "|";
+  color: #000;
+  font-size: 100%;
+  animation: blk 0.5s linear 0s  infinite;
+}
+
+@keyframes lst {
+  0% {
+    width: 100%;
+  }
+  80% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes blk{
+  0%{
+    content: "";
+  }
+  100%{
+    content: "|";
+  }
+}
+
+#k1>div:first-child>div:nth-child(4){
+  font-size: 70%;
+  color: #00000090;
+}
+
+#k1>div:first-child>div:nth-child(5){
+  margin-top: 15px;
+}
+
+#k1>div:first-child>div:nth-child(5)>a{
+  display: inline-block;
+  padding: 10px;
+  font-size: 70%;
+  border: 2px solid #000;
+  border-radius: 10px;
+  font-weight: 900;
+}
+
+#k1>div:first-child>div:nth-child(5)>a:first-child{
+  color: #fff;
+  background-color: #017397;
+  text-shadow: -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
+}
+
+#k1>div:first-child>div:nth-child(5)>a:nth-child(2){
+  color: #000
+}
+
+
+
+
+#k2{
+  margin: 5vh 1.6vw;
+}
+
+#k2>div:first-child{
+  color: #017397;
+  font-size: 70%;
+}
+
+#k2>div:nth-child(2){
+  font-size: 110%;
+  font-weight: 900;
+  margin: 0 0 15px 0;
+}
+
+#k2>div:nth-child(3){
+  display: grid;
+  gap: 15px;
+}
+
+#k2>div:nth-child(3)>div{
+  border: 2px solid #00000060;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 5px 5px 20px #727272, -5px -5px 20px #ffffff;
+}
+
+#k2>div:nth-child(3)>div>i{
+  color: #017397;
+  display: block;
+}
+
+#k2>div:nth-child(3)>div>div:first-of-type{
+  font-weight: 700;
+  font-size: 80%;
+  margin: 10px;
+}
+
+#k2>div:nth-child(3)>div>div:nth-of-type(2){
+  color: #000000bb;
+  font-size: 60%;
+}
+
+
+
+
+
+#k3 {
+  margin: 5vh 1.6vw;
+  display: flex;
+}
+
+#k3>div:first-child>div:first-child{
+  color: #017397;
+  font-size: 70%;
+}
+
+#k3>div:first-child>div:nth-child(2){
+  font-size: 110%;
+  font-weight: 900;
+  margin: 0 0 15px 0;
+}
+
+#k3>div:first-child>div:nth-child(3){
+  font-size: 70%;
+  color: #00000090;
+}
+
+#k3>div:nth-child(2){
+  width: 100%;
+}
+
+#rob{
+  width: 100%;
+}
+
+
+
+
+
+#k7{
+  margin: 5vh 1.6vw;
+}
+
+#k7>div:first-child>div:first-child{
+  color: #017397;
+  font-size: 70%;
+}
+
+#k7>div:first-child>div:nth-child(2){
+  font-size: 110%;
+  font-weight: 900;
+  margin: 0 0 15px 0;
+}
+
+#k7>div:nth-child(2){
+  display: grid;
+}
+
+#k7>div:nth-child(2)>div:first-child>img{
+  width: calc(100% - 25px);
+  padding: 10px;
+  border: 2px solid #00000090;
+  box-shadow: 5px 5px 20px #727272, -5px -5px 20px #ffffff;
+}
+
+#k7>div:nth-child(2)>div:nth-child(2)>div:first-child{
+  font-size: 100%;
+  font-weight: 700;
+  font-family: dash;
+}
+
+#k7>div:nth-child(2)>div:nth-child(2){
+  margin: 40px 0;
+}
+
+#k7>div:nth-child(2)>div:nth-child(2)>div:nth-child(2){
+  font-size: 60%;
+  font-style: italic;
+  font-weight: bolder;
+  color: #fff;
+  text-shadow: -1px 0 #000, 1px 0 #000, 0 1px #000, 0 -1px #000;
+}
+
+#k7>div:nth-child(2)>div:nth-child(2)>div:nth-child(3){
+  font-size: 60%;
+  color: #00000090;
+}
+
+#k7>div:nth-child(2)>div:nth-child(2)>div:nth-child(4){
+  
+}
+
+#k7>div:nth-child(2)>div:nth-child(3)>div:first-child{
+  font-size: 70%;
+  font-weight: bolder;
+}
+
+#k7>div:nth-child(2)>div:nth-child(3)>div:nth-child(2)>a{
+  font-size: 70%;
+  margin-right: 1.5rem;
+  color: #017387;
+}
+
+
+
+
+
+
+#k4{
+  margin: 5vh 1.6vw;
+}
+
+#k4>div:first-child>div:first-child{
+  color: #017397;
+  font-size: 70%;
+}
+
+#k4>div:first-child>div:nth-child(2){
+  font-size: 110%;
+  font-weight: 900;
+  margin: 0 0 15px 0;
+}
+
+#k4>div:nth-child(2){
+  display: grid;
+  font-size: 60%;
+}
+
+#k4>div:nth-child(2) table {
+  width: 100%;
+  box-shadow: 5px 5px 20px #727272, -5px -5px 20px #ffffff;
+  border: 2px solid #00000090;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#k4>div:nth-child(2) table th, #k4>div:nth-child(2) table td {
+  border: 1px solid #00000090;
+  padding: 8px;
+  text-align: left;
+}
+
+
+
+
+
+#k5{
+  padding: 1.4% 0 2rem;
+  border-top: 2px solid #017397;
+  text-align: center;
+  background-color: #00000040;
+}
+
+#k5>div:first-child{
+  font-family: ttd;
+}
+
+#k5>div:nth-child(2){
+  padding: 2% 0;
+  font-size: 70%;
+}
+
+#k5>div:nth-child(2)>a{
+  margin-right: 10px;
+}
+
+#k5>div:last-child{
+  font-size: 60%;
+}
